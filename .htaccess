@@ -1,0 +1,35 @@
+#begin rewrite settings do not change any settings if you don't understand about the cms edited By m3h3di.
+# Don't show directory listings for URLs which map to a directory.
+# Follow symbolic links in this directory.
+Options -MultiViews +FollowSymlinks -Indexes
+#
+# If mod_security is enabled, attempt to disable it.
+# - Note, this will work on the majority of hosts but on
+#   MediaTemple, it is known to cause random Internal Server
+#   errors. For MediaTemple, please remove the block below
+#
+
+RewriteEngine On
+
+<IfModule mod_security.c>
+	# Turn off mod_security filtering.
+	SecFilterEngine Off
+	# The below probably isn't needed, but better safe than sorry.
+	SecFilterScanPOST Off
+</IfModule>
+
+# Various rewrite rules.
+<IfModule mod_rewrite.c>
+	# RewriteEngine On
+	# RewriteBase /
+	DirectoryIndex index.php
+	# Rewrite URLs of the form 'x' to the form 'index.php?q=x'.
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteCond %{REQUEST_URI} !=/favicon.ico
+	RewriteRule ^(.*)$ index.php?Theme=site&Script=$1 [L,QSA]
+	#RewriteRule ^(.*)/(.*)$ index.php?Theme=$1&Script=$2 [L,QSA]
+	<IfModule mod_env.c>
+		SetEnv SEO_SUPPORT 1
+	</IfModule>
+</IfModule>
