@@ -11,3 +11,9 @@ Need to enable module rewrite in Apache.
 ### PHP Settings
 short_open_tag = On  
 error_reporting = E_ALL & ~E_NOTICE & ~E_STRICT & ~E_DEPRECATED
+
+### Login Page
+![image](https://github.com/xerun/echoframework/blob/master/login.JPG)
+
+### Inner Page
+![image](https://github.com/xerun/echoframework/blob/master/inner.JPG)
