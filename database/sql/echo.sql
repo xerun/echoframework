@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.4
+-- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: May 14, 2017 at 12:40 PM
--- Server version: 5.7.14
--- PHP Version: 5.6.25
+-- Host: 127.0.0.1:3306
+-- Generation Time: May 11, 2020 at 10:47 AM
+-- Server version: 5.7.24
+-- PHP Version: 7.2.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -40,7 +42,7 @@ DELIMITER ;
 --
 
 DROP TABLE IF EXISTS `tbladvert`;
-CREATE TABLE `tbladvert` (
+CREATE TABLE IF NOT EXISTS `tbladvert` (
   `AdvertUUID` varchar(100) CHARACTER SET latin1 NOT NULL DEFAULT '',
   `AdvertPanelUUID` varchar(255) NOT NULL DEFAULT '0',
   `AdvertName` varchar(255) CHARACTER SET latin1 NOT NULL DEFAULT '',
@@ -55,7 +57,8 @@ CREATE TABLE `tbladvert` (
   `UserUUIDLocked` varchar(50) NOT NULL,
   `DateInserted` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `DateUpdated` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `DateLocked` datetime NOT NULL DEFAULT '0000-00-00 00:00:00'
+  `DateLocked` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`AdvertUUID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -73,7 +76,7 @@ INSERT INTO `tbladvert` (`AdvertUUID`, `AdvertPanelUUID`, `AdvertName`, `AdvertT
 --
 
 DROP TABLE IF EXISTS `tbladvertpanel`;
-CREATE TABLE `tbladvertpanel` (
+CREATE TABLE IF NOT EXISTS `tbladvertpanel` (
   `AdvertPanelUUID` varchar(100) CHARACTER SET latin1 NOT NULL DEFAULT '',
   `AdvertPanelName` varchar(255) CHARACTER SET latin1 NOT NULL DEFAULT '',
   `AdvertPanelIdentifire` varchar(255) CHARACTER SET latin1 NOT NULL DEFAULT '',
@@ -87,7 +90,8 @@ CREATE TABLE `tbladvertpanel` (
   `UserUUIDLocked` varchar(50) NOT NULL,
   `DateInserted` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `DateUpdated` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `DateLocked` datetime NOT NULL DEFAULT '0000-00-00 00:00:00'
+  `DateLocked` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`AdvertPanelUUID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -107,7 +111,7 @@ INSERT INTO `tbladvertpanel` (`AdvertPanelUUID`, `AdvertPanelName`, `AdvertPanel
 --
 
 DROP TABLE IF EXISTS `tblapplicationsetting`;
-CREATE TABLE `tblapplicationsetting` (
+CREATE TABLE IF NOT EXISTS `tblapplicationsetting` (
   `ApplicationSettingUUID` varchar(100) CHARACTER SET latin1 NOT NULL DEFAULT '',
   `ApplicationSettingName` varchar(255) CHARACTER SET latin1 NOT NULL DEFAULT '',
   `ApplicationSettingValue` varchar(255) CHARACTER SET latin1 NOT NULL DEFAULT '',
@@ -122,7 +126,8 @@ CREATE TABLE `tblapplicationsetting` (
   `DateInserted` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `DateUpdated` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `DateLocked` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `IsParmanent` int(11) NOT NULL DEFAULT '0' COMMENT 'Determines if the record is erasable'
+  `IsParmanent` int(11) NOT NULL DEFAULT '0' COMMENT 'Determines if the record is erasable',
+  PRIMARY KEY (`ApplicationSettingUUID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -154,7 +159,7 @@ INSERT INTO `tblapplicationsetting` (`ApplicationSettingUUID`, `ApplicationSetti
 --
 
 DROP TABLE IF EXISTS `tblcountry`;
-CREATE TABLE `tblcountry` (
+CREATE TABLE IF NOT EXISTS `tblcountry` (
   `CountryUUID` varchar(100) CHARACTER SET latin1 NOT NULL DEFAULT '',
   `CountryName` varchar(100) CHARACTER SET latin1 NOT NULL DEFAULT '',
   `CountryPicture` varchar(255) CHARACTER SET latin1 NOT NULL DEFAULT '',
@@ -165,7 +170,8 @@ CREATE TABLE `tblcountry` (
   `DateInserted` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `DateUpdated` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `DateLocked` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `IsParmanent` int(11) NOT NULL DEFAULT '0' COMMENT 'Determines if the record is erasable'
+  `IsParmanent` int(11) NOT NULL DEFAULT '0' COMMENT 'Determines if the record is erasable',
+  PRIMARY KEY (`CountryUUID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -325,7 +331,7 @@ INSERT INTO `tblcountry` (`CountryUUID`, `CountryName`, `CountryPicture`, `Count
 --
 
 DROP TABLE IF EXISTS `tbllanguage`;
-CREATE TABLE `tbllanguage` (
+CREATE TABLE IF NOT EXISTS `tbllanguage` (
   `LanguageUUID` varchar(100) CHARACTER SET latin1 NOT NULL DEFAULT '',
   `LanguageName` varchar(100) CHARACTER SET latin1 NOT NULL DEFAULT '',
   `LanguageCode` varchar(100) CHARACTER SET latin1 NOT NULL DEFAULT '',
@@ -356,7 +362,7 @@ INSERT INTO `tbllanguage` (`LanguageUUID`, `LanguageName`, `LanguageCode`, `Lang
 --
 
 DROP TABLE IF EXISTS `tblmenu`;
-CREATE TABLE `tblmenu` (
+CREATE TABLE IF NOT EXISTS `tblmenu` (
   `MenuUUID` varchar(36) CHARACTER SET latin1 NOT NULL DEFAULT '',
   `MenuParentUUID` varchar(36) CHARACTER SET latin1 NOT NULL DEFAULT '',
   `MenuPosition` varchar(100) DEFAULT NULL,
@@ -368,7 +374,8 @@ CREATE TABLE `tblmenu` (
   `UserUUIDLocked` varchar(36) NOT NULL,
   `DateInserted` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `DateUpdated` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `DateLocked` datetime NOT NULL DEFAULT '0000-00-00 00:00:00'
+  `DateLocked` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`MenuUUID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -391,7 +398,7 @@ INSERT INTO `tblmenu` (`MenuUUID`, `MenuParentUUID`, `MenuPosition`, `MenuName`,
 --
 
 DROP TABLE IF EXISTS `tblpayment`;
-CREATE TABLE `tblpayment` (
+CREATE TABLE IF NOT EXISTS `tblpayment` (
   `PaymentUUID` varchar(100) CHARACTER SET latin1 NOT NULL DEFAULT '',
   `PaymentPurpose` varchar(255) CHARACTER SET latin1 NOT NULL DEFAULT '',
   `PaymentDescription` varchar(100) CHARACTER SET latin1 NOT NULL DEFAULT '',
@@ -407,7 +414,8 @@ CREATE TABLE `tblpayment` (
   `UserUUIDLocked` varchar(50) NOT NULL,
   `DateInserted` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `DateUpdated` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `DateLocked` datetime NOT NULL DEFAULT '0000-00-00 00:00:00'
+  `DateLocked` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`PaymentUUID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -424,12 +432,13 @@ INSERT INTO `tblpayment` (`PaymentUUID`, `PaymentPurpose`, `PaymentDescription`,
 --
 
 DROP TABLE IF EXISTS `tblpermission`;
-CREATE TABLE `tblpermission` (
+CREATE TABLE IF NOT EXISTS `tblpermission` (
   `PermissionUUID` varchar(36) NOT NULL,
   `UserTypeUUID` varchar(36) NOT NULL,
   `UserUUID` varchar(36) DEFAULT NULL,
   `Page` varchar(255) NOT NULL,
-  `DateInserted` datetime NOT NULL
+  `DateInserted` datetime NOT NULL,
+  PRIMARY KEY (`PermissionUUID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -587,7 +596,7 @@ INSERT INTO `tblpermission` (`PermissionUUID`, `UserTypeUUID`, `UserUUID`, `Page
 --
 
 DROP TABLE IF EXISTS `tblstaticcontent`;
-CREATE TABLE `tblstaticcontent` (
+CREATE TABLE IF NOT EXISTS `tblstaticcontent` (
   `StaticContentUUID` varchar(100) CHARACTER SET latin1 NOT NULL DEFAULT '',
   `StaticContentName` varchar(255) CHARACTER SET latin1 NOT NULL DEFAULT '',
   `StaticContentTitle` varchar(255) NOT NULL,
@@ -600,7 +609,8 @@ CREATE TABLE `tblstaticcontent` (
   `UserUUIDLocked` varchar(50) NOT NULL,
   `DateInserted` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `DateUpdated` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `DateLocked` datetime NOT NULL DEFAULT '0000-00-00 00:00:00'
+  `DateLocked` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`StaticContentUUID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -608,7 +618,7 @@ CREATE TABLE `tblstaticcontent` (
 --
 
 INSERT INTO `tblstaticcontent` (`StaticContentUUID`, `StaticContentName`, `StaticContentTitle`, `StaticContent`, `LanguageUUID`, `StaticContentPicture`, `StaticContentIsActive`, `UserUUIDInserted`, `UserUUIDUpdated`, `UserUUIDLocked`, `DateInserted`, `DateUpdated`, `DateLocked`) VALUES
-('{EA19EFA1-70B9-4282-A061-E55E8CEEBC57}', 'Home', '', '<p><img title="ECHO FRAMEWORK" src="http://localhost/echo/upload/other/EchoLogo.gif" alt="echo" width="500" height="391" /></p>', 'ae0a2e74-03ca-102a-b78c-b9cfe0f62f08', '', 1, '0a0a5d38-e7ac-1029-9be9-4fc904b88e9e', '0a0a5d38-e7ac-1029-9be9-4fc904b88e9e', '0', '2012-05-17 12:37:19', '2016-08-08 11:22:06', '2016-08-08 11:22:06');
+('{EA19EFA1-70B9-4282-A061-E55E8CEEBC57}', 'Home', '', '<div id=\"three-container\"></div>', 'ae0a2e74-03ca-102a-b78c-b9cfe0f62f08', '', 1, '0a0a5d38-e7ac-1029-9be9-4fc904b88e9e', '0a0a5d38-e7ac-1029-9be9-4fc904b88e9e', '0', '2012-05-17 12:37:19', '2020-05-11 10:46:37', '2020-05-11 10:46:37');
 
 -- --------------------------------------------------------
 
@@ -617,7 +627,7 @@ INSERT INTO `tblstaticcontent` (`StaticContentUUID`, `StaticContentName`, `Stati
 --
 
 DROP TABLE IF EXISTS `tbluser`;
-CREATE TABLE `tbluser` (
+CREATE TABLE IF NOT EXISTS `tbluser` (
   `UserUUID` varchar(100) CHARACTER SET latin1 NOT NULL DEFAULT '',
   `UserName` varchar(100) CHARACTER SET latin1 NOT NULL DEFAULT '',
   `UserPassword` varchar(255) CHARACTER SET latin1 NOT NULL DEFAULT '',
@@ -648,7 +658,8 @@ CREATE TABLE `tbluser` (
   `DateUpdated` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `DateLocked` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `IsParmanent` int(11) NOT NULL DEFAULT '0',
-  `UserLastActivity` datetime NOT NULL DEFAULT '0000-00-00 00:00:00'
+  `UserLastActivity` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`UserUUID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -668,7 +679,7 @@ INSERT INTO `tbluser` (`UserUUID`, `UserName`, `UserPassword`, `UserEmail`, `Use
 --
 
 DROP TABLE IF EXISTS `tblusertype`;
-CREATE TABLE `tblusertype` (
+CREATE TABLE IF NOT EXISTS `tblusertype` (
   `UserTypeUUID` varchar(100) CHARACTER SET latin1 NOT NULL DEFAULT '',
   `UserTypeName` varchar(100) CHARACTER SET latin1 NOT NULL DEFAULT '',
   `UserTypeDescription` text CHARACTER SET latin1 NOT NULL,
@@ -679,7 +690,8 @@ CREATE TABLE `tblusertype` (
   `UserUUIDLocked` varchar(50) NOT NULL,
   `DateInserted` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `DateUpdated` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `DateLocked` datetime NOT NULL DEFAULT '0000-00-00 00:00:00'
+  `DateLocked` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`UserTypeUUID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -691,70 +703,7 @@ INSERT INTO `tblusertype` (`UserTypeUUID`, `UserTypeName`, `UserTypeDescription`
 ('0a09d254-e7ac-1029-9be9-4fc904b88e9e', 'Super Admin', 'Users have unrestricted full access to the application', '', 1, '0', '0', '0', '2006-12-28 16:12:00', '0000-00-00 00:00:00', '2006-12-28 16:12:00'),
 ('A7598650-2674-1770-1391-F5DF64B73540', 'Admin', '', '', 1, '0a0a5d38-e7ac-1029-9be9-4fc904b88e9e', '0a0a5d38-e7ac-1029-9be9-4fc904b88e9e', '0', '2007-03-18 16:03:21', '2012-06-07 11:53:02', '2012-06-07 11:53:02'),
 ('F5CEC80A-C2EC-4B27-9715-D6875745D8AA', 'Member', 'All the member will be here', '', 1, '0a0a5d38-e7ac-1029-9be9-4fc904b88e9e', '0a0a5d38-e7ac-1029-9be9-4fc904b88e9e', '0', '2012-06-07 10:34:14', '2016-02-18 14:52:40', '2016-02-18 14:52:40');
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `tbladvert`
---
-ALTER TABLE `tbladvert`
-  ADD PRIMARY KEY (`AdvertUUID`);
-
---
--- Indexes for table `tbladvertpanel`
---
-ALTER TABLE `tbladvertpanel`
-  ADD PRIMARY KEY (`AdvertPanelUUID`);
-
---
--- Indexes for table `tblapplicationsetting`
---
-ALTER TABLE `tblapplicationsetting`
-  ADD PRIMARY KEY (`ApplicationSettingUUID`);
-
---
--- Indexes for table `tblcountry`
---
-ALTER TABLE `tblcountry`
-  ADD PRIMARY KEY (`CountryUUID`);
-
---
--- Indexes for table `tblmenu`
---
-ALTER TABLE `tblmenu`
-  ADD PRIMARY KEY (`MenuUUID`);
-
---
--- Indexes for table `tblpayment`
---
-ALTER TABLE `tblpayment`
-  ADD PRIMARY KEY (`PaymentUUID`);
-
---
--- Indexes for table `tblpermission`
---
-ALTER TABLE `tblpermission`
-  ADD PRIMARY KEY (`PermissionUUID`);
-
---
--- Indexes for table `tblstaticcontent`
---
-ALTER TABLE `tblstaticcontent`
-  ADD PRIMARY KEY (`StaticContentUUID`);
-
---
--- Indexes for table `tbluser`
---
-ALTER TABLE `tbluser`
-  ADD PRIMARY KEY (`UserUUID`);
-
---
--- Indexes for table `tblusertype`
---
-ALTER TABLE `tblusertype`
-  ADD PRIMARY KEY (`UserTypeUUID`);
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

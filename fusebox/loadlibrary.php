@@ -1,4 +1,4 @@
-<?
+<?php
 	include "./library/database.php";	//Custom MySQL functions
 	include "./fusebox/applicationdb.php"; //Load the application setting from database
 	include "./library/session.php";	//Session related functions

@@ -7,9 +7,9 @@
 		Note:		
 	*/
 	$userID = $Encryption->decode($_REQUEST["z"]);
-	$User=SQL_Select($Entity="User", $Where="U.UserUUID = '".$userID."' AND U.UserRegistrationCode = '".REQUEST(g)."'", $OrderBy="U.UserName", $SignleRow=true, $Debug=false);
+	$User=SQL_Select($Entity="User", $Where="U.UserUUID = '".$userID."' AND U.UserRegistrationCode = '".REQUEST('g')."'", $OrderBy="U.UserName", $SignleRow=true, $Debug=false);
 	if(count($User)>1){
-	    $Where="UserUUID = '".$userID."' AND UserRegistrationCode = '".REQUEST(g)."'";
+	    $Where="UserUUID = '".$userID."' AND UserRegistrationCode = '".REQUEST('g')."'";
 		$User=SQL_InsertUpdate(
 	        $Entity="User",
 	        $EntityAlias="U",

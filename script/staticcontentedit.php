@@ -11,7 +11,7 @@
 	$ActionURL=ApplicationURL($Theme=$_REQUEST["Theme"],$Script="staticcontenteditaction?StaticContentName={$_REQUEST["StaticContentName"]}");
 	$ButtonCaption="Insert";
 
-    $StaticContent=SQL_Select($Entity="StaticContent", $Where="SC.StaticContentName = '".REQUEST(StaticContentName)."' AND L.LanguageCode = '".REQUEST(LanguageCode)."'", $OrderBy="SC.StaticContentName", $SingleRow=true, $RecordShowFrom=0, $RecordShowUpTo=0, $Debug=false);
+    $StaticContent=SQL_Select($Entity="StaticContent", $Where="SC.StaticContentName = '".REQUEST('StaticContentName')."' AND L.LanguageCode = '".REQUEST('LanguageCode')."'", $OrderBy="SC.StaticContentName", $SingleRow=true, $RecordShowFrom=0, $RecordShowUpTo=0, $Debug=false);
 	if(count($StaticContent)>1)$UpdateMode=true;
 
 	if($UpdateMode){

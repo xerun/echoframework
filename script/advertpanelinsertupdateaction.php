@@ -24,7 +24,7 @@
 			if(isset($_REQUEST["uuid"]))$UpdateMode=true;
 		
 			$Where="";
-			if($UpdateMode)$Where="{$Entity}UUID = '".REQUEST(uuid)."'";
+			if($UpdateMode)$Where="{$Entity}UUID = '".REQUEST('uuid')."'";
 	
 			//POST(AdvertPanelPicture)=ProcessUpload("AdvertPanelPicture", $Application["UploadPath"]);
 	
@@ -32,13 +32,13 @@
 				$Entity,
 				$EntityAlias,
 				$AdvertPanelData=array(
-					"AdvertPanelName"=>POST(AdvertPanelName),
-					"AdvertPanelIdentifire"=>POST(AdvertPanelIdentifire),
-					"AdvertWidth"=>POST(AdvertWidth),
-					"AdvertHeight"=>POST(AdvertHeight),
-					"AdvertPanelMaxNumber"=>POST(AdvertPanelMaxNumber),
-					"AdvertPanelIsVertical"=>POST(AdvertPanelIsVertical),
-					"AdvertPanelIsActive"=>POST(AdvertPanelIsActive)
+					"AdvertPanelName"=>POST('AdvertPanelName'),
+					"AdvertPanelIdentifire"=>POST('AdvertPanelIdentifire'),
+					"AdvertWidth"=>POST('AdvertWidth'),
+					"AdvertHeight"=>POST('AdvertHeight'),
+					"AdvertPanelMaxNumber"=>POST('AdvertPanelMaxNumber'),
+					"AdvertPanelIsVertical"=>POST('AdvertPanelIsVertical'),
+					"AdvertPanelIsActive"=>POST('AdvertPanelIsActive')
 			),
 				$Where
 			);

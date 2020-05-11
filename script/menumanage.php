@@ -6,7 +6,7 @@
     $EntityCaptionLower=strtolower($EntityCaption);
 
     $Where="1 = 1";
-	if($_POST["MenuUUID"]!="")$Where.=" AND {$EntityAlias}.{$Entity}UUID = ".POST(MenuUUID)."";
+	if($_POST["MenuUUID"]!="")$Where.=" AND {$EntityAlias}.{$Entity}UUID = ".POST('MenuUUID')."";
 
 	$Echo.= CTL_Datagrid(
 		$Entity,

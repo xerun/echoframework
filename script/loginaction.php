@@ -19,7 +19,7 @@
 					throw new Exception('Required field <strong>"'.ucfirst($field).'"</strong> missing input.');
 				}
 			}
-			$userName=POST(UserName);
+			$userName=POST('UserName');
 			$password=$Encryption->encrypt($_POST["Password"]);
 		
 			$User=SQL_Select($Entity="User", $Where="(U.UserName = '{$userName}' OR U.PhoneMobile = '{$userName}' OR U.UserEmail = '{$userName}') AND U.UserPassword = '{$password}' AND U.UserIsActive = 1 AND U.UserIsRegistered = 1", $OrderBy="U.UserName", $SingleRow=false, $RecordShowFrom=0, $RecordShowUpTo=0, $Debug=false);

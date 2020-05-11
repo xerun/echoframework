@@ -8,7 +8,7 @@
 	*/
 	
 	//The payment was made, update payment record
-	$Payment=SQL_PaymentSelect($Where="P.PaymentUUID = '".REQUEST(PaymentUUID)."'", $OrderBy="", $SingleRow=true, $RecordShowFrom=0, $RecordShowUpTo=0, $Debug=false);
+	$Payment=SQL_PaymentSelect($Where="P.PaymentUUID = '".REQUEST('PaymentUUID')."'", $OrderBy="", $SingleRow=true, $RecordShowFrom=0, $RecordShowUpTo=0, $Debug=false);
 	SQL_PaymentInsertUpdate(
 		$PaymentData=array(
 		    "PaymentPurpose"=>$Payment["PaymentPurpose"],
@@ -18,10 +18,10 @@
 		    "AmountPaid"=>$Payment["AmountPayable"],
 		    "DatePaid"=>date("Y-m-d"),
 		),
-		$Where="PaymentUUID = '".REQUEST(PaymentUUID)."'"
+		$Where="PaymentUUID = '".REQUEST('PaymentUUID')."'"
 	);
 
-	$Payment=SQL_PaymentSelect($Where="P.PaymentUUID = '".REQUEST(PaymentUUID)."'", $OrderBy="", $SingleRow=true, $RecordShowFrom=0, $RecordShowUpTo=0, $Debug=false);
+	$Payment=SQL_PaymentSelect($Where="P.PaymentUUID = '".REQUEST('PaymentUUID')."'", $OrderBy="", $SingleRow=true, $RecordShowFrom=0, $RecordShowUpTo=0, $Debug=false);
 	//Email a notification to the administrator
 	SendMail(
 		$ToEmail=$Application["EmailContact"],

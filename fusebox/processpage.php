@@ -1,10 +1,7 @@
 <?php
 	//Connect to the databae if the application is suppose to use a database and make the database connection available to the
 	//entire application anytime.
-	error_reporting (E_ALL ^ E_NOTICE);
 	//Build the page HTML
-	date_default_timezone_set("Asia/Dhaka");
-
 	//Set HTML content variables
 	$Echo=$BeforeEcho=$AfterEcho="";
 	//Set the global User input error flags

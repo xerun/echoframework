@@ -18,8 +18,8 @@
 			$Entity="UserSignUp";
 			$EntityLower=strtolower($Entity);
 			
-			$Name=POST(Name);
-			$userEmail=POST(Email);
+			$Name=POST('Name');
+			$userEmail=POST('Email');
 			
 			$userPassword=trim($_POST["Password"]);
 			$userPasswordConfirm=trim($_POST["ConfirmPassword"]);

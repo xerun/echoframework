@@ -24,7 +24,7 @@
 			if(isset($_REQUEST["uuid"]))$UpdateMode=true;
 		
 			$Where="";
-			if($UpdateMode)$Where="{$Entity}UUID = '".REQUEST(uuid)."'";
+			if($UpdateMode)$Where="{$Entity}UUID = '".REQUEST('uuid')."'";
 	
 			//$_POST["MenuPicture"]=ProcessUpload("MenuPicture", $Application["UploadPath"]);
 	
@@ -32,11 +32,11 @@
 				$Entity,
 				$EntityAlias,
 				$MenuData=array(
-					"MenuParentUUID"=>POST(MenuParentUUID),
-                    "MenuPosition"=>POST(MenuPosition),
-                    "MenuName"=>POST(MenuName),
-                    "MenuUrl"=>POST(MenuUrl),
-					"MenuIsActive"=>POST(MenuIsActive)
+					"MenuParentUUID"=>POST('MenuParentUUID'),
+                    "MenuPosition"=>POST('MenuPosition'),
+                    "MenuName"=>POST('MenuName'),
+                    "MenuUrl"=>POST('MenuUrl'),
+					"MenuIsActive"=>POST('MenuIsActive')
 			),
 				$Where
 			);

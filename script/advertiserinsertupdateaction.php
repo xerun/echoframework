@@ -9,7 +9,7 @@
 			foreach($required_fields as $field){
 				if(empty($_POST[$field])){
 					$field = preg_replace('/(\w+)([A-Z])/U', '\\1 \\2', $field);
-					throw new Exception('Required field <strong>"'.ucfirst($field).'"</strong> missing input.');
+					throw new Exception('Required field <strong>"'.ucfirsT($field).'"</strong> missing input.');
 				}
 			}
 		
@@ -24,7 +24,7 @@
 			if(isset($_REQUEST["uuid"]))$UpdateMode=true;
 		
 			$Where="";
-			if($UpdateMode)$Where="{$Entity}UUID = '".REQUEST(uuid)."'";
+			if($UpdateMode)$Where="{$Entity}UUID = '".REQUEST('uuid')."'";
 	
 			//$_POST["AdvertiserPicture"]=ProcessUpload("AdvertiserPicture", $Application["UploadPath"]);
 	
@@ -32,8 +32,8 @@
 				$Entity,
 				$EntityAlias,
 				$AdvertiserData=array(
-					"AdvertiserName"=>POST(AdvertiserName),
-					"AdvertiserIsActive"=>POST(AdvertiserIsActive),
+					"AdvertiserName"=>POST('AdvertiserName'),
+					"AdvertiserIsActive"=>POST('AdvertiserIsActive'),
 					"UserUUID"=>$_SESSION["UserUUID"]
 			),
 				$Where

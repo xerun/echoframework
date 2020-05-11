@@ -25,7 +25,7 @@
 			if(isset($_REQUEST["uuid"]))$UpdateMode=true;
 		
 			$Where="";
-			if($UpdateMode)$Where="{$Entity}UUID = '".REQUEST(uuid)."'";
+			if($UpdateMode)$Where="{$Entity}UUID = '".REQUEST('uuid')."'";
 	
 			$_POST["UserTypePicture"]=ProcessUpload("UserTypePicture", $Application["UploadPath"]);
 	
@@ -33,10 +33,10 @@
 				$Entity,
 				$EntityAlias,
 				$UserTypeData=array(
-					"UserTypeName"=>POST(UserTypeName),
-					"UserTypeDescription"=>POST(UserTypeDescription),
-					"UserTypePicture"=>POST(UserTypePicture),
-					"UserTypeIsActive"=>POST(UserTypeIsActive)
+					"UserTypeName"=>POST('UserTypeName'),
+					"UserTypeDescription"=>POST('UserTypeDescription'),
+					"UserTypePicture"=>POST('UserTypePicture'),
+					"UserTypeIsActive"=>POST('UserTypeIsActive')
 			),
 				$Where
 			);

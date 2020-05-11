@@ -16,7 +16,7 @@
 
 	if($_POST["RESULT"]==0){//Payment went successful
 		//Payment record update
-		$Payment=SQL_PaymentSelect($Where="P.PaymentUUID = '".POST(USER2)."'", $OrderBy="", $SingleRow=true, $RecordShowFrom=0, $RecordShowUpTo=0, $Debug=false);
+		$Payment=SQL_PaymentSelect($Where="P.PaymentUUID = '".POST('USER2')."'", $OrderBy="", $SingleRow=true, $RecordShowFrom=0, $RecordShowUpTo=0, $Debug=false);
 		SQL_PaymentInsertUpdate(
 			$PaymentData=array(
 			    "PaymentPurpose"			=>	$Payment["PaymentPurpose"],
@@ -29,10 +29,10 @@
 	            "CouponDiscountPercentile"	=>	$Payment["CouponDiscountPercentile"],
 	            "CouponDiscountAmount"		=>	$Payment["CouponDiscountAmount"]
 			),
-			$Where="PaymentID = ".POST(USER1)." AND PaymentUUID = '".POST(USER2)."'"
+			$Where="PaymentID = ".POST('USER1')." AND PaymentUUID = '".POST('USER2')."'"
 		);
 
-		$Payment=SQL_PaymentSelect($Where="P.PaymentID = ".POST(USER1)." AND P.PaymentUUID = '".POST(USER2)."' AND P.AmountPayable = P.AmountPaid", $OrderBy="P.DatePaid", $SingleRow=true, $RecordShowFrom=0, $RecordShowUpTo=0, $Debug=false);
+		$Payment=SQL_PaymentSelect($Where="P.PaymentID = ".POST('USER1')." AND P.PaymentUUID = '".POST('USER2')."' AND P.AmountPayable = P.AmountPaid", $OrderBy="P.DatePaid", $SingleRow=true, $RecordShowFrom=0, $RecordShowUpTo=0, $Debug=false);
 
 	    MySQLQuery("UPDATE tblcoupon SET CouponScopes = CouponScopes - 1, CouponScopesUsed = CouponScopesUsed + 1 WHERE CouponCode = '{$Payment["CouponCode"]}'");
 

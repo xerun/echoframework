@@ -59,7 +59,7 @@ if($fileName!="blob") {
             "Photos",
             "P",
             $PhotosData = array(
-                "PhotosCategoryUUID" => POST(PhotosCategoryUUID),
+                "PhotosCategoryUUID" => POST('PhotosCategoryUUID'),
                 "PhotosAlbumUUID" => "",
                 "PhotosImage" => $PhotosImage,
                 "PhotosOrder" => 1,

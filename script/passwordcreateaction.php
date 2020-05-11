@@ -16,11 +16,11 @@
 			$userPassword=trim($_POST["Password"]);
 			$userPasswordConfirm=trim($_POST["PasswordConfirm"]);
 			
-			$UserUUID=$Encryption->decode(POST(q));
+			$UserUUID=$Encryption->decode(POST('q'));
 			$User=SQL_Select($Entity="User", $Where="U.UserUUID = '{$UserUUID}'", $OrderBy="U.FirstName", $SingleRow=false, $RecordShowFrom=0, $RecordShowUpTo=0, $Debug=false);
 			if(count($User)>0){
 
-				if (!preg_match('/\S/', $_POST["Password"])){
+				if (!preg_match('/\S/', POST('Password')){
 					throw new Exception('You have space in the Password field. Please enter password without space.');	
 				}
 				
@@ -52,7 +52,7 @@
 				}
 
 					//$NewPassword=RandomPassword();
-				MySQLQuery("UPDATE tbluser SET UserPassword = '".md5($_POST["Password"])."' WHERE UserUUID = '{$UserUUID}'");
+				MySQLQuery("UPDATE tbluser SET UserPassword = '".md5(POST('Password'))."' WHERE UserUUID = '{$UserUUID}'");
 					//$User=SQL_Select($Entity="User", $Where="U.UserEmail = '{$_POST["UserEmail"]}'", $OrderBy="U.JS_FullName", $SingleRow=true, $RecordShowFrom=0, $RecordShowUpTo=0, $Debug=false);
 			
 					//Email the changed log in information to the user with a registration confirmation

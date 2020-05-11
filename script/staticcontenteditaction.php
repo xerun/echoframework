@@ -9,12 +9,12 @@
 	
 	$UpdateMode=false;
 $response = array('type'=>'', 'page'=>'', 'message'=>'');
-    $StaticContent=SQL_Select($Entity="StaticContent", $Where="SC.StaticContentName = '".REQUEST(StaticContentName)."' AND L.LanguageCode = '".REQUEST(LanguageCode)."'", $OrderBy="SC.StaticContentName", $SingleRow=true, $RecordShowFrom=0, $RecordShowUpTo=0, $Debug=false);
+    $StaticContent=SQL_Select($Entity="StaticContent", $Where="SC.StaticContentName = '".REQUEST('StaticContentName')."' AND L.LanguageCode = '".REQUEST('LanguageCode')."'", $OrderBy="SC.StaticContentName", $SingleRow=true, $RecordShowFrom=0, $RecordShowUpTo=0, $Debug=false);
 	if(count($StaticContent)>1)$UpdateMode=true;
 
-    $Language=SQL_Select($Entity="Language", $Where="L.LanguageCode = '".REQUEST(LanguageCode)."'", $OrderBy="L.LanguageName", $SingleRow=true, $RecordShowFrom=0, $RecordShowUpTo=0, $Debug=false);
+    $Language=SQL_Select($Entity="Language", $Where="L.LanguageCode = '".REQUEST('LanguageCode')."'", $OrderBy="L.LanguageName", $SingleRow=true, $RecordShowFrom=0, $RecordShowUpTo=0, $Debug=false);
 	$StaticContentData=array(
-	    "StaticContentName"=>REQUEST(StaticContentName),
+	    "StaticContentName"=>REQUEST('StaticContentName'),
 	    "StaticContent"=>$_POST["StaticContent"],
 	    "LanguageUUID"=>$Language["LanguageUUID"],
 	    "StaticContentPicture"=>$StaticContent["StaticContentPicture"],
@@ -22,7 +22,7 @@ $response = array('type'=>'', 'page'=>'', 'message'=>'');
 	);
 
     $Where="";
-	if($UpdateMode)$Where="StaticContentName = '".REQUEST(StaticContentName)."' AND LanguageUUID = '{$Language["LanguageUUID"]}'";
+	if($UpdateMode)$Where="StaticContentName = '".REQUEST('StaticContentName')."' AND LanguageUUID = '{$Language["LanguageUUID"]}'";
 
 	SQL_InsertUpdate($Entity="StaticContent", $EntityAlias="SC", $StaticContentData, $Where);
 	$response['type'] = 'reload';

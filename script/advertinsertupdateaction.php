@@ -24,7 +24,7 @@
 			if(isset($_REQUEST["uuid"]))$UpdateMode=true;
 		
 			$Where="";
-			if($UpdateMode)$Where="{$Entity}UUID = '".REQUEST(uuid)."'";
+			if($UpdateMode)$Where="{$Entity}UUID = '".REQUEST('uuid')."'";
 	
 			$_POST["AdvertPicture"]=ProcessUpload("AdvertPicture", $Application["UploadPath"]);
 	
@@ -32,13 +32,13 @@
 				$Entity,
 				$EntityAlias,
 				$AdvertData=array(
-					"AdvertName"=>POST(AdvertName),
-					"AdvertType"=>POST(AdvertType),
-					"AdvertPanelUUID"=>POST(AdvertPanelUUID),
-					"AdvertPicture"=>POST(AdvertPicture),
-					"AdvertClickURL"=>POST(AdvertClickURL),
-					"AdvertToolTip"=>POST(AdvertToolTip),
-					"AdvertIsActive"=>POST(AdvertIsActive),
+					"AdvertName"=>POST('AdvertName'),
+					"AdvertType"=>POST('AdvertType'),
+					"AdvertPanelUUID"=>POST('AdvertPanelUUID'),
+					"AdvertPicture"=>POST('AdvertPicture'),
+					"AdvertClickURL"=>POST('AdvertClickURL'),
+					"AdvertToolTip"=>POST('AdvertToolTip'),
+					"AdvertIsActive"=>POST('AdvertIsActive'),
 					"UserUUID"=>$_SESSION["UserUUID"]
 			),
 				$Where

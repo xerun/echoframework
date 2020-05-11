@@ -19,7 +19,7 @@
 					throw new Exception('Required field <strong>"'.ucfirst($field).'"</strong> missing input.');
 				}
 			}
-			$userEmail=POST(Email);
+			$userEmail=POST('Email');
 			// ok, field validations are ok
 	
 			$User=SQL_Select($Entity="User", $Where="U.UserEmail = '{$userEmail}'", $OrderBy="U.UserName", $SingleRow=false, $RecordShowFrom=0, $RecordShowUpTo=0, $Debug=false);

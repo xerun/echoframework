@@ -6,7 +6,7 @@
     $EntityCaptionLower=strtolower($EntityCaption);
 
 	if($_GET["uuid"]!=""){	
-		SQL_Delete($Entity="ApplicationSetting", $Where="{$Entity}UUID = '".GET(uuid)."' AND IsParmanent!=1");
+		SQL_Delete($Entity="ApplicationSetting", $Where="{$Entity}UUID = '".GET('uuid')."' AND IsParmanent!=1");
 	}else{
 		$id=explode(',',$_POST["multiple_id"]);
 		for($i = 0; $i<count($id); $i++){

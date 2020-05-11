@@ -17,8 +17,8 @@
 
 			$Entity="UserProfile";
 			$EntityLower=strtolower($Entity);
-			$UserType=POST(UserTypeUUID);
-			$User=POST(UserUUID);
+			$UserType=POST('UserTypeUUID');
+			$User=POST('UserUUID');
 			$FileName = $_POST["permissionfile"];
 			MySQLQuery("Delete from tblpermission WHERE UserTypeUUID='".$UserType."' and UserUUID = '".$User."'");
 			foreach ($FileName as $key => $value) {

@@ -1,4 +1,4 @@
-<?
+<?php
 	//Set the default application variables
 	$Application=array(
 	    "UseDatabase"						=>	true,

@@ -39,7 +39,7 @@
 	    $ButtonCaption="Update";
 	    $ActionURL=ApplicationURL($Theme=$_REQUEST["Theme"],$Script=$EntityLower."insertupdateaction", "uuid={$_REQUEST["uuid"]}");
 
-		if($UpdateMode&&!isset($_POST["".$Entity."Name"]))$User=SQL_Select($Entity="User", $Where="{$EntityAlias}.{$Entity}UUID = '".REQUEST(uuid)."'", $OrderBy="{$EntityAlias}.{$Entity}Name", $SingleRow=true);
+		if($UpdateMode&&!isset($_POST["".$Entity."Name"]))$User=SQL_Select($Entity="User", $Where="{$EntityAlias}.{$Entity}UUID = '".REQUEST('uuid')."'", $OrderBy="{$EntityAlias}.{$Entity}Name", $SingleRow=true);
 	}
 
 	if($_SESSION["UserTypeUUID"]==$Application["UserTypeIDmDoctor"]){

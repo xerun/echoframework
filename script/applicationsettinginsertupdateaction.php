@@ -25,17 +25,17 @@
 		
 			$Where="";
 			if($UpdateMode){
-				$Where="{$Entity}UUID = '".REQUEST(uuid)."'";
+				$Where="{$Entity}UUID = '".REQUEST('uuid')."'";
 				$ApplicationSetting=SQL_InsertUpdate(
 					$Entity,
 					$EntityAlias,
 					$ApplicationSettingData=array(
-						"ApplicationSettingValue"=>POST(ApplicationSettingValue),
-						"ApplicationSettingDescription"=>POST(ApplicationSettingDescription),
+						"ApplicationSettingValue"=>POST('ApplicationSettingValue'),
+						"ApplicationSettingDescription"=>POST('ApplicationSettingDescription'),
 						//"ApplicationSettingInputTypeName"=>POST(ApplicationSettingInputTypeName),
 						//"ApplicationSettingIsHidden"=>POST(ApplicationSettingIsHidden),
 						//"ApplicationSettingIsLocked"=>POST(ApplicationSettingIsLocked),
-						"ApplicationSettingIsActive"=>POST(ApplicationSettingIsActive)
+						"ApplicationSettingIsActive"=>POST('ApplicationSettingIsActive')
 				),
 					$Where
 				);
@@ -44,13 +44,13 @@
 					$Entity,
 					$EntityAlias,
 					$ApplicationSettingData=array(
-						"ApplicationSettingName"=>POST(ApplicationSettingName),
-						"ApplicationSettingValue"=>POST(ApplicationSettingValue),
-						"ApplicationSettingDescription"=>POST(ApplicationSettingDescription),
+						"ApplicationSettingName"=>POST('ApplicationSettingName'),
+						"ApplicationSettingValue"=>POST('ApplicationSettingValue'),
+						"ApplicationSettingDescription"=>POST('ApplicationSettingDescription'),
 						//"ApplicationSettingInputTypeName"=>POST(ApplicationSettingInputTypeName),
 						//"ApplicationSettingIsHidden"=>POST(ApplicationSettingIsHidden),
 						//"ApplicationSettingIsLocked"=>POST(ApplicationSettingIsLocked),
-						"ApplicationSettingIsActive"=>POST(ApplicationSettingIsActive)
+						"ApplicationSettingIsActive"=>POST('ApplicationSettingIsActive')
 				),
 					$Where
 				);
