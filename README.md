@@ -15,5 +15,8 @@ error_reporting = E_ALL & ~E_NOTICE & ~E_STRICT & ~E_DEPRECATED
 ### Login Page
 ![image](https://github.com/xerun/echoframework/blob/master/login.JPG)
 
+### Home page
+![Alt Text](https://github.com/xerun/echoframework/blob/master/home.gif)
+
 ### Inner Page
 ![image](https://github.com/xerun/echoframework/blob/master/inner.JPG)
